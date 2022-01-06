@@ -10,6 +10,8 @@ typedef unsigned int uint32_t;
 typedef char bool;
 typedef long vptr;
 
+char* textbuf = (char*)0xB8000;
+
 int strlen(char* ptr){
   if(ptr == 0) return 0;
   int len = 0;
@@ -17,4 +19,9 @@ int strlen(char* ptr){
     len++;
   }
   return len;
+}
+
+void puts(char* p){
+  
+
 }
