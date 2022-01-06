@@ -1,0 +1,1 @@
+This is supposed to be like a new variant of MANIAX. I want it to be be lightweight and small like the original Unix was.

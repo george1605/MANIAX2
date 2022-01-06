@@ -22,6 +22,14 @@ int strlen(char* ptr){
 }
 
 void puts(char* p){
-  
+  while(*p){
+    *textbuf++ = *p;
+    *textbuf++ = 0xF; 
+  }
 
+}
+
+void perror(char* p){
+
+  
 }

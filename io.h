@@ -36,3 +36,6 @@ uint32_t inl(uint16_t port)
     asm volatile("inl %w1, %0" : "=a" (data) : "Nd" (port));
     return data;
 }
+
+#define CRT_PORT 0x3D5
+#define KBD_PORT 0x60
