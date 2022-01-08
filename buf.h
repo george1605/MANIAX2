@@ -2,6 +2,7 @@
 #include "lib.c"
 #define STDIN 0
 #define STDOUT 1
+#define STDERR 2
 
 struct buf {
   int flags;
@@ -16,5 +17,7 @@ struct vbuf {
 } iobufs[16];
 
 void vbinit(){
-  iobufs[0].data = textbuf;
+  iobufs[STDIN].data = textbuf;
+  iobufs[STDERR].data = textbuf;
 }
+

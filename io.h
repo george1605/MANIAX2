@@ -37,5 +37,20 @@ uint32_t inl(uint16_t port)
     return data;
 }
 
+#define inportb(x) inb(x)
+#define outportb(x,y) outb(x,y)
 #define CRT_PORT 0x3D5
 #define KBD_PORT 0x60
+
+struct device {
+    int ports[4];
+    char(*getc)(struct device*);
+    void(*putc)(char*, struct device*);
+    void(*hnd)(struct regs*, struct device*);
+};
+
+char dev_getc(struct device* u)
+{
+    if(u == 0) return 0;
+    return inportb(u->ports[0]);
+}

@@ -25,11 +25,19 @@ void puts(char* p){
   while(*p){
     *textbuf++ = *p;
     *textbuf++ = 0xF; 
+    p++;
   }
-
 }
 
 void perror(char* p){
-
-  
+  while(*p){
+    *textbuf++ = *p;
+    *textbuf++ = 0x4; 
+    p++;
+  }
 }
+
+struct regs {
+  int eax,ebx;
+  int error;
+};
