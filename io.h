@@ -41,6 +41,7 @@ uint32_t inl(uint16_t port)
 #define outportb(x,y) outb(x,y)
 #define CRT_PORT 0x3D5
 #define KBD_PORT 0x60
+#define PIT_PORT 0x20
 
 struct device {
     int ports[4];
@@ -49,8 +50,16 @@ struct device {
     void(*hnd)(struct regs*, struct device*);
 };
 
+//generic putc and getc
+//if there isn't an device driver, it defaults to this
 char dev_getc(struct device* u)
 {
     if(u == 0) return 0;
     return inportb(u->ports[0]);
+}
+
+void dev_putc(struct device* u,char i)
+{
+    if(u == 0) return;
+    outportb(u->ports[0],i);
 }

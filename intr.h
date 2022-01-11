@@ -1,4 +1,5 @@
 #pragma once
+#include "io.h"
 
 struct idt_entry
 {
@@ -298,4 +299,11 @@ void irq_handler(struct regs *r)
 
 void irq_init(){
   irq_install();
+}
+
+void irq_ack(int x){
+    if(x >= 40)
+       outportb(0xA0, 0x20);
+       
+    outportb(0x20,0x20);
 }
